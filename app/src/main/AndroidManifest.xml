@@ -26,7 +26,9 @@
         <activity android:name=".ui.SerialActivity"/>
         <activity android:name=".ui.RokidHttpServerActivity"/>
         <activity android:name=".ui.RokidHttpClientActivity"/>
+        <activity android:name=".ui.AiuiActivity"/>
        <service android:name=".ui.RokidServerService"/>
+
     </application>
 
 </manifest>

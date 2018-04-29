@@ -6,10 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import hefu.pad.sdk.R;
 import hefu.pad.sdk.serial.Device;
 import hefu.pad.sdk.serial.SerialPortManager;
+import hefu.pad.sdk.serial.message.IMessage;
 import hefu.pad.sdk.utils.ToastUtils;
 
 /**
@@ -17,12 +23,13 @@ import hefu.pad.sdk.utils.ToastUtils;
  */
 
 public class SerialActivity extends AppCompatActivity {
-    private String TAG = "SerialActivity";
-
+    private String TAG = "JyhSerialActivity";
+    TextView tv;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serial);
+        tv=findViewById(R.id.tv);
     }
 
     public void open(View view) {
@@ -30,6 +37,7 @@ public class SerialActivity extends AppCompatActivity {
         mDevice.setBaudrate("115200");
         mDevice.setPath("/dev/ttyS3");
         Boolean mOpened = SerialPortManager.instance().open(mDevice) != null;
+        Log.e(TAG,"isOpen="+mOpened);
         if (mOpened) {
             ToastUtils.getInstance().show("成功打开串口");
         } else {
@@ -62,7 +70,6 @@ public class SerialActivity extends AppCompatActivity {
 
     public void back(View view) {
         String text="4EB6967DAE79 14a51a024bdf 451 60";
-
         SerialPortManager.instance().sendCmdDirection(text);
     }
 
@@ -76,5 +83,21 @@ public class SerialActivity extends AppCompatActivity {
         SerialPortManager.instance().sendCmdDirection(text);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(IMessage message) {
+        //串口收到发过来的消息
+        Log.e("JYH Log",message.getMessage());
+        tv.setText(message.getMessage());
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
 }

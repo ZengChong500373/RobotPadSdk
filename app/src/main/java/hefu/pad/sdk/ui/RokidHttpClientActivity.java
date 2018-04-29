@@ -30,7 +30,7 @@ public class RokidHttpClientActivity extends AppCompatActivity implements RokidI
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_http_client);
+        setContentView(R.layout.activity_rokid_http_client);
         ed = findViewById(R.id.ed);
         tv_receive = findViewById(R.id.tv_receive);
 

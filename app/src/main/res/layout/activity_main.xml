@@ -10,13 +10,18 @@
         android:layout_height="wrap_content"
         android:onClick="serial" />
     <Button
-        android:text="httpServer"
+        android:text="rokidHttpServer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="httpServer" />
+        android:onClick="rokidHttpServer" />
     <Button
-        android:text="httpSocket"
+        android:text="rokidHttpSocket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="httpSocket" />
+        android:onClick="rokidHttpSocket" />
+    <Button
+        android:text="aiui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="aiui" />
 </LinearLayout>

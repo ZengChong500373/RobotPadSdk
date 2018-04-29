@@ -21,13 +21,19 @@ Intent intent;
         startActivity(intent);
     }
 
-    public void httpServer(View view) {
+    public void rokidHttpServer(View view) {
         intent=new Intent(this,RokidHttpServerActivity.class);
         startActivity(intent);
     }
 
-    public void httpSocket(View view) {
+    public void rokidHttpSocket(View view) {
         intent=new Intent(this,RokidHttpClientActivity.class);
         startActivity(intent);
     }
+
+    public void aiui(View view) {
+        intent=new Intent(this,AiuiActivity.class);
+        startActivity(intent);
+    }
+
 }
