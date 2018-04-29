@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+   <Button
+       android:onClick="openSocket"
+       android:text="开启socket"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="sendTts"
+        android:text="发送tts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="sendAsr"
+        android:text="发送asr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_receive"
+        android:text="收到的服务器的消息"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
